@@ -4,7 +4,7 @@ import Crypto
 from Crypto.PublicKey import RSA
 from Crypto import Random
 import ast
-
+import socket
 
 host_name = socket.gethostname()
 host_ip = socket.gethostbyname(host_name)
@@ -19,8 +19,6 @@ msg_plaintext_str = "alert tcp 10.0.2.5 any -> any 80 (msg:\"DROP\"; sid:1000008
 msg_encrypt = publickey.encrypt(msg_plaintext_str, 32)
 msg_encrypt_str = str(msg_encrypt)
 #print(msg_encrypt_str)
-
-
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
