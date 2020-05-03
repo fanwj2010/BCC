@@ -17,15 +17,14 @@ msg_encrypt_str = str(msg_encrypt)
 #print(msg_encrypt_str)
 
 
-
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 
 while True:
       t_start = time.time()
-      time.sleep(1)
       message = socket.recv()
+      time.sleep(1)
      #print("Received request: %s"% message )
       #socket.send(b"This is Controller3")
       socket.send(msg_encrypt_str)
